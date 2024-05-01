@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .language-selection {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .language-btn {
+      padding: 10px 20px;
+      margin: 0 10px;
+      border: 2px solid #3B8AFF;
+      border-radius: 4px;
+      cursor: pointer;
+      color: #3B8AFF;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .language-btn:hover {
+      background-color: #3B8AFF;
+      color: #fff;
+    }
+
+    .category-btn {
+      display: block;
+      padding: 10px 20px;
+      background-color: #D53939;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+
+    .category-btn:hover {
+      background-color: #B72A2A;
+    }
+
+    .categories {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .categories a {
+      display: block;
+      padding: 10px 20px;
+      margin-bottom: 10px;
+      background-color: #3D9970;
+      color: #fff;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .categories a:hover {
+      background-color: #2E854B;
+    }
+
+    .add-items {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .add-items input[type="text"] {
+      padding: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .add-items button {
+      padding: 10px 20px;
+      background-color: #6B5B95;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-items button:hover {
+      background-color: #563D7C;
+    }
+
+    .add-features {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .add-features input[type="text"] {
+      padding: 10px;
+      margin-bottom: 10px;
+      width: 45%;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .add-features button {
+      padding: 10px 20px;
+      background-color: #FF6F61;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .add-features button:hover {
+      background-color: #FF4E46;
+    }
+
+    .feature-list {
+      margin-top: 20px;
+    }
+
+    .feature-list ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .feature-list li {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 5px;
+    }
+
+    .feature-list li span {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Seller Dashboard</h1>
+    
+    <div class="language-selection">
+      <button class="language-btn" id="hindiBtn">Hindi</button>
+      <button class="language-btn" id="englishBtn">English</button>
+      <button class="language-btn" id="teluguBtn">Telugu</button>
+      <button class="language-btn" id="malayalamBtn">Malayalam</button>
+      <button class="language-btn" id="kannadaBtn">Kannada</button>
+      <button class="language-btn" id="tamilBtn">Tamil</button>
+    </div>
+
+    <a href="#" class="category-btn" id="categoryBtn">Select Category of Items to Add</a>
+
+    <div class="categories" id="categoryOptions">
+      <a href="#" class="category-item">Electronics</a>
+      <a href="#" class="category-item">Garments</a>
+      <a href="#" class="category-item">Gaming</a>
+      <a href="#" class="category-item">Furniture</a>
+    </div>
+
+    <div class="add-items" id="addItems">
+      <input type="text" id="itemDescription" placeholder="Item Description">
+      <button onclick="addItem()" id="addItemBtn">Add Items</button>
+    </div>
+
+    <div class="add-features" id="addFeatures">
+      <div class="default-features">
+        <input type="text" id="price" placeholder="Price">
+        <input type="text" id="imageLink1" placeholder="Image Link 1">
+        <input type="text" id="imageLink2" placeholder="Image Link 2">
+        <input type="text" id="colour" placeholder="Colour">
+        <input type="text" id="size" placeholder="Size">
+        <input type="text" id="productName" placeholder="Name of Product">
+        <input type="text" id="videoLink" placeholder="Video Link">
+        <input type="text" id="modelNumber" placeholder="Model Number">
+      </div>
+      <input type="text" id="feature" placeholder="Feature">
+      <input type="text" id="value" placeholder="Value">
+      <button onclick="addFeature()" id="addFeatureBtn">Add Features</button>
+    </div>
+
+    <div class="feature-list" id="featureList">
+      <h3>Added Features:</h3>
+      <ul id="features">
+        <!-- List of added features will be displayed here -->
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    var addedFeatures = [];
+
+    function addFeature() {
+      var feature = document.getElementById('feature').value;
+      var value = document.getElementById('value').value;
+
+      if (feature.trim() !== '' && value.trim() !== '') {
+        var featureObj = {
+          feature: feature,
+          value: value
+        };
+
+        addedFeatures.push(featureObj);
+        displayFeatures();
+      }
+
+      document.getElementById('feature').value = '';
+      document.getElementById('value').value = '';
+    }
+
+    function displayFeatures() {
+      var featuresList = document.getElementById('features');
+      featuresList.innerHTML = '';
+
+      addedFeatures.forEach(function(item) {
+        var listItem = document.createElement('li');
+        listItem.innerHTML = `<span>${item.feature}</span>: ${item.value}`;
+        featuresList.appendChild(listItem);
+      });
+    }
+
+    function addItem() {
+      var itemDescription = document.getElementById('itemDescription').value;
+      var price = document.getElementById('price').value;
+      var imageLink1 = document.getElementById('imageLink1').value;
+      var imageLink2 = document.getElementById('imageLink2').value;
+      var colour = document.getElementById('colour').value;
+      var size = document.getElementById('size').value;
+      var productName = document.getElementById('productName').value;
+      var videoLink = document.getElementById('videoLink').value;
+      var modelNumber = document.getElementById('modelNumber').value;
+
+      // Here you can send all the data to your backend
+      // for storing in the database. This is just a simulation.
+      console.log('Item Description:', itemDescription);
+      console.log('Price:', price);
+      console.log('Image Link 1:', imageLink1);
+      console.log('Image Link 2:', imageLink2);
+      console.log('Colour:', colour);
+      console.log('Size:', size);
+      console.log('Name of Product:', productName);
+      console.log('Video Link:', videoLink);
+      console.log('Model Number:', modelNumber);
+      console.log('Added Features:', addedFeatures);
+
+      // Clear all inputs and features list after adding
+      document.getElementById('itemDescription').value = '';
+      document.getElementById('price').value = '';
+      document.getElementById('imageLink1').value = '';
+      document.getElementById('imageLink2').value = '';
+      document.getElementById('colour').value = '';
+      document.getElementById('size').value = '';
+      document.getElementById('productName').value = '';
+      document.getElementById('videoLink').value = '';
+      document.getElementById('modelNumber').value = '';
+      addedFeatures = [];
+      displayFeatures();
+    }
+
+    var categoryBtn = document.getElementById('categoryBtn');
+    var categoryOptions = document.getElementById('categoryOptions');
+    var addItems = document.getElementById('addItems');
+    var addFeatures = document.getElementById('addFeatures');
+
+    categoryBtn.addEventListener('click', function() {
+      if (categoryOptions.style.display === 'none' || categoryOptions.style.display === '') {
+        categoryOptions.style.display = 'block';
+        addItems.style.display = 'none';
+        addFeatures.style.display = 'none'; // Hide add-features if shown
+      } else {
+        categoryOptions.style.display = 'none';
+      }
+    });
+
+    var categoryItems = document.querySelectorAll('.category-item');
+    categoryItems.forEach(function(item) {
+      item.addEventListener('click', function() {
+        categoryOptions.style.display = 'none'; // Hide category options
+        addItems.style.display = 'block'; // Show add-items
+        addFeatures.style.display = 'block'; // Show add-features
+      });
+    });
+  </script>
+</body>
+</html>

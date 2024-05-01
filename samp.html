@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Dashboard</title>
+  <style>
+    /* Updated CSS styles for a more colorful and attractive design */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* Button styles */
+    .submit-btn, .language-btn, .category-btn, .category-item {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-btn {
+      background-color: #4CAF50;
+      color: white;
+      margin-top: 20px;
+    }
+
+    .language-btn, .category-btn {
+      margin-bottom: 10px;
+    }
+
+    .language-btn {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .language-btn:hover, .category-btn:hover, .category-item:hover {
+      background-color: #0056b3;
+    }
+
+    /* Form styles */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    .form-group input[type="text"],
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      height: 120px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Seller Dashboard</h1>
+    
+    <!-- Language selection buttons -->
+    <div class="language-selection">
+      <button href="/additems.html?language=Hindi" class="language-btn" id="hindiBtn">Hindi</button>
+      <button href="/additems.html?language=English" class="language-btn" id="englishBtn">English</button>
+      <button href="/additems.html?language=Telugu" class="language-btn" id="teluguBtn">Telugu</button>
+      <button href="/products?language=Malyalum" class="language-btn" id="malayalamBtn">Malayalam</button>
+      <button href="/products?language=Kannada" class="language-btn" id="kannadaBtn">Kannada</button>
+      <button href="/products?language=Tamil" class="language-btn" id="tamilBtn">Tamil</button>
+    </div>
+
+    <!-- Category selection button -->
+    <button href="#" class="category-btn" id="categoryBtn">Select Category of Items to Add</button>
+
+    <!-- Category options -->
+    <div class="categories" id="categoryOptions">
+      <button href="#" class="category-item" style="background-color: #ff6f61;">Electronics</button>
+      <button href="#" class="category-item" style="background-color: #ffa600;">Garments</button>
+      <button href="#" class="category-item" style="background-color: #2ec4b6;">Gaming</button>
+      <button href="#" class="category-item" style="background-color: #58508d;">Furniture</button>
+    </div>
+
+    <!-- Add items form -->
+    <div class="add-items" id="addItems">
+      <div class="form-group">
+        <label for="itemDescription">Item Description</label>
+        <input type="text" id="itemDescription" placeholder="Item Description">
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" id="price" placeholder="Price">
+      </div>
+      <div class="form-group">
+        <label for="imageLink1">Image Link 1</label>
+        <input type="text" id="imageLink1" placeholder="Image Link 1">
+      </div>
+      <div class="form-group">
+        <label for="imageLink2">Image Link 2</label>
+        <input type="text" id="imageLink2" placeholder="Image Link 2">
+      </div>
+      <div class="form-group">
+        <label for="colour">Colour</label>
+        <input type="text" id="colour" placeholder="Colour">
+      </div>
+      <div class="form-group">
+        <label for="size">Size</label>
+        <input type="text" id="size" placeholder="Size">
+      </div>
+      <div class="form-group">
+        <label for="productName">Name of Product</label>
+        <input type="text" id="productName" placeholder="Name of Product">
+      </div>
+      <div class="form-group">
+        <label for="videoLink">Video Link</label>
+        <input type="text" id="videoLink" placeholder="Video Link">
+      </div>
+      <div class="form-group">
+        <label for="modelNumber">Model Number</label>
+        <input type="text" id="modelNumber" placeholder="Model Number">
+      </div>
+
+      <!-- Add features form -->
+      <div class="add-features">
+        <div class="form-group">
+          <label for="feature">Feature</label>
+          <input type="text" id="feature" placeholder="Feature">
+        </div>
+        <div class="form-group">
+          <label for="value">Value</label>
+          <input type="text" id="value" placeholder="Value">
+        </div>
+        <button class="submit-btn" onclick="addFeature()">Add Feature</button>
+      </div>
+
+      <!-- List of added features -->
+      <div class="feature-list" id="featureList">
+        <h3>Added Features:</h3>
+        <ul id="features">
+          <!-- List of added features will be displayed here -->
+        </ul>
+      </div>
+
+      <!-- Submit button for adding details to JSON file -->
+      <button class="submit-btn" onclick="addItem()">Submit Details</button>
+    </div>
+  </div>
+
+  <script>
+    /* Your existing JavaScript code */
+    var addedFeatures = [];
+

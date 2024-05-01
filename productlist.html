@@ -1,0 +1,37 @@
+<div class="products-list">
+    <div class="products-detail">
+        <div class="product-image">
+            <img src="{{%FIRST_IMAGE%}}" height="120" width="120">
+        </div>
+        <div class="product-specs">
+            <h3>{{%NAME%}}</h3>
+            <p><span>Model Name:</span>{{%MODEL NAME%}}</p>
+            <p><span>Model Number:</span>{{%MODEL NO%}}</p>
+            <p><span>Size:</span>{{%SIZE%}}</p>
+            <p><span>Camera:</span>{{%camera SIZE%}}</p>
+        </div>
+    </div>
+    <div class="products-detail">
+        <div class="product-info"><h4>{{%PRICE%}}</h4></div>
+        <div class="product-info"><h4>{{%COLOR%}}</h4></div>
+        <div class="product-info">
+            <button class="btn btn-primary" onclick="somepage()">Buy Now</button>
+            <button class="btn btn-primary">
+                <a href="/products?language={{%langu%}}&id={{%ID%}}" class="btn btn-primary">Show Details</a>
+            </button>
+            
+        </div>
+    </div>
+    <div class="chatbot">
+        <button class="chatbot button" onclick="loadWebpage()"> chatbot</button>
+        <iframe id="embeddedFrame" width="800" height="600" frameborder="0"></iframe>
+    </div>
+    <script>
+        function loadWebpage() {
+            window.location.href= "https://mediafiles.botpress.cloud/62cd8613-abc8-40c4-8870-379efaccaeb5/webchat/bot.html";
+        }
+        function somepage() {
+            window.location.href= 'payment.html';
+        }
+    </script>
+</div>
